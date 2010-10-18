@@ -12,6 +12,8 @@ class SnippetsController < ApplicationController
   # Post /snippets
   def create
     @snippet = Snippet.new(params[:snippet])
+    @snippet.user = current_user
+    
     if(@snippet.save())
       redirect_to snippets_path, :notice=>"Snippet criado com sucesso!"
     else
@@ -21,12 +23,12 @@ class SnippetsController < ApplicationController
   
   # Get /snippets/[:id]/edit
   def edit
-    @snippet = Snippet.find(params[:id])
+    @snippet = Snippet.find_by_id_and_user_id(params[:id],current_user.id)
   end
 
   # Put /snippets/[:id]  
   def update
-    @snippet = Snippet.find(params[:id])
+    @snippet = Snippet.find_by_id_and_user_id(params[:id],current_user.id)
     
     if(@snippet.update_attributes(params[:snippet]))
     
