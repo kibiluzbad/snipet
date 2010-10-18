@@ -1,6 +1,6 @@
 class IncludeLanguageAttributeOnSnippet < ActiveRecord::Migration
   def self.up
-    alter_table :snippets do |t|
+    change_table :snippets do |t|
       t.string :language
     end
   end

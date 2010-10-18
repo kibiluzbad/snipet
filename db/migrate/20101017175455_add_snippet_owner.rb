@@ -1,6 +1,6 @@
 class AddSnippetOwner < ActiveRecord::Migration
   def self.up
-    alter_table :snippets do |t|
+    change_table :snippets do |t|
       t.integer :user_id
     end
   end
