@@ -1,0 +1,33 @@
+<%= form_for(@snippet) do |f| %>
+  <% if @snippet.errors.any? %>
+    <div id="error_explanation" class="error">
+      <p><strong><%= pluralize(@snippet.errors.count, "erro") %> foram encontrados:</strong></p>
+      <ul>
+      <% @snippet.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :title %><br />
+    <%= f.text_field :title %>
+  </div>
+  <div class="field">
+    <%= f.label :language %><br />
+    <%= f.text_field :language %>
+  </div>
+  <div class="field">
+    <%= f.label :source %><br />
+    <%= f.text_area :source %>
+  </div>
+  <div class="field">
+     <label for="snippet_tags">Tags</label><br />
+     <input type="text" name="snippet[tags]" class="tags" id="snippet_tags" value="<%= @snippet.join_tags %>" />
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+  <%= link_to "Voltar", root_path %>
+<% end %>

@@ -1,0 +1,23 @@
+<li>
+<fieldset class="snippet">
+<legend>
+<%= snippet.title %> <%= snippet.created_at.strftime("- criado em %d/%m/%Y") %>
+</legend>
+<span class="col1">
+<%= image_tag snippet.user.gravatar_url %>
+<em>por <%= snippet.user.username%></em>
+</span>
+<span class="col2">
+<pre class="brush: <%= snippet.language.downcase %>; toolbar: false;">
+  <%= snippet.source %>
+</pre>
+<% if user_signed_in? &&
+snippet.owned_by_current_user(current_user) %>
+<p class="buttons"><%= link_to("Editar", edit_snippet_path(snippet)) %> <%= link_to('Excluir', snippet, :confirm => 'Deseja realmente excluir esse snippet?', :method => :delete) %></p>
+<% end %>
+<span class="tagMatches">
+<%= render snippet.tags %>
+</span>
+</span>
+</fieldset>
+</li>

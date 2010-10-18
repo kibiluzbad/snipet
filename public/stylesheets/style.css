@@ -1,0 +1,52 @@
+body{
+    background-image:url(../images/bg.png);
+    background-repeat: repeat-x;
+    background-color:#F7F7F7;
+}
+#wrapper{
+    margin: 0 auto;
+    width:1008px;
+}
+#header{
+    height:50px;
+}
+#header a{color:#fff;text-decoration:none;}
+#header a:hover{color:#fff;text-decoration:none;}
+#header a:visited{color:#fff;text-decoration:none;}
+#content{
+padding:10px;
+}
+#snippets{
+    list-style:none;
+}
+.tags{
+    width:500px;
+}
+SPAN.tagMatches {
+    margin-left: 10px;
+}
+
+SPAN.tagMatches SPAN {
+    padding: 5px;
+    margin-right: 4px;
+    cursor: pointer;
+    border: 1px solid #ccc;
+}
+#user_panel{
+    float:right;
+}
+.snippet{
+    background-color:#fff;
+}
+.snippet legend{
+    padding:5px;
+    border:1px solid #ccc;
+    background-color:#FFD4A6;
+}
+.col1{width:100px;float:left;}
+.col2{width:800px;float:left;border-left:1px solid #ccc;}
+form{
+ border:1px solid #ccc;
+     background-color:#fff;
+     padding:20px;   
+}
