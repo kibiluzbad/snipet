@@ -2,7 +2,7 @@ class CreateSnippets < ActiveRecord::Migration
   def self.up
     create_table :snippets do |t|
       t.string :title
-      t.string :source
+      t.text :source
       t.timestamps
     end
   end
