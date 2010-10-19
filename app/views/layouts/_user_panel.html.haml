@@ -1,0 +1,5 @@
+#user_panel
+  - if user_signed_in?
+    Olá #{current_user.email}, #{link_to "sign out",  destroy_user_session_path}
+  - else
+    = link_to "sign in",  new_user_session_path

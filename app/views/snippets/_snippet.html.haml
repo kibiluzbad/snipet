@@ -1,0 +1,18 @@
+%li
+  %fieldset.snippet
+    %legend
+      = snippet.title
+      = snippet.created_at.strftime("- criado em %d/%m/%Y")
+    %span.col1
+      = image_tag snippet.user.gravatar_url
+      %em
+        por #{snippet.user.username}
+    %span.col2
+      %pre{:class => "brush: #{snippet.language.downcase}; toolbar: false;"}
+        = snippet.source
+      - if user_signed_in? && snippet.owned_by_current_user(current_user)
+        %p.buttons
+          = link_to("Editar", edit_snippet_path(snippet))
+          = link_to('Excluir', snippet, :confirm => 'Deseja realmente excluir esse snippet?', :method => :delete)
+      %span.tagMatches
+        = render snippet.tags
