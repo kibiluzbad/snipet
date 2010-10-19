@@ -6,6 +6,8 @@ gem 'devise'
 gem 'gravtastic'
 gem 'haml'
 gem "haml-rails"
+gem "hpricot"
+gem "ruby_parser"
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
