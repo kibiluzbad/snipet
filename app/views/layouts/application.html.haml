@@ -25,3 +25,4 @@
         - if alert
           .notice= alert
         = yield
+    = render "layouts/menu" if user_signed_in?     

@@ -5,7 +5,6 @@ $(document).ready(function() {
         url: '/tags/',
         delay: 250
 	});
-
 	
     $("#snippet_language").autocomplete('/languages/', {
 		width: 300,
@@ -52,4 +51,34 @@ $(document).ready(function() {
       'xml xhtml xslt html    /javascripts/shBrushXml.js'
     );
     SyntaxHighlighter.all()
+    
+    var menuRoot = $( "#menu-root" );
+    var menu = $( "#menu" );
+     
+    // Hook up menu root click event.
+    menuRoot
+    .attr( "href", "javascript:void( 0 )" )
+    .click(function(){
+        // Toggle the menu display.
+        menu.toggle();
+         
+        // Blur the link to remove focus.
+        menuRoot.blur();
+         
+        // Cancel event (and its bubbling).
+        return( false );
+    });
+     
+    // Hook up a click handler on the document so that
+    // we can hide the menu if it is not the target of
+    // the mouse click.
+    $(document).click(function( event ){
+        // Check to see if this came from the menu.
+        if (menu.is( ":visible" ) &&
+        !$( event.target ).closest( "#menu" ).size()){
+            // The click came outside the menu, so
+            // close the menu.
+            menu.hide();
+        }
+    });
 });

@@ -50,3 +50,69 @@ form{
      background-color:#fff;
      padding:20px;   
 }
+#site-bottom-bar {
+background-color: #F0F0F0 ;
+border-top: 1px solid #CCCCCC ;
+bottom: 0px ;
+font-family: verdana, arial ;
+font-size: 11px ;
+height: 30px ;
+position: fixed ;
+width: 100% ;
+z-index: 1000 ;
+}
+ 
+#site-bottom-bar-frame {
+height: 30px ;
+margin: 0px 10px 0px 10px ;
+position: relative ;
+}
+ 
+#site-bottom-bar-content {
+padding: 3px 0px 0px 0px ;
+}
+ 
+#menu-root {
+background-color: #E8E8E8 ;
+border: 1px solid #D0D0D0 ;
+color: #000000 ;
+display: block ;
+height: 22px ;
+line-height: 22px ;
+text-align: center ;
+text-decoration: none ;
+width: 105px ;
+}
+ 
+#menu-root:hover {
+background-color: #666666 ;
+border-color: #000000 ;
+color: #FFFFFF ;
+}
+ 
+#menu {
+background-color: #E8E8E8 ;
+border: 1px solid #666666 ;
+bottom: 32px ;
+display: none ;
+left: 0px ;
+padding: 5px 5px 1px 5px ;
+position: absolute ;
+width: 200px ;
+}
+ 
+#menu a {
+background-color: #E8E8E8 ;
+border: 1px solid #FFFFFF ;
+color: #000000 ;
+display: block ;
+margin-bottom: 4px ;
+padding: 5px 0px 5px 5px ;
+text-decoration: none ;
+}
+ 
+#menu a:hover {
+background-color: #666666 ;
+border-color: #000000 ;
+color: #FFFFFF ;
+}

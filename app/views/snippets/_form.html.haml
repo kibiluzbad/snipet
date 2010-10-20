@@ -1,29 +1,31 @@
-= form_for(@snippet) do |f|
-  - if @snippet.errors.any?
-    #error_explanation.error
-      %p
-        %strong
-          = pluralize(@snippet.errors.count, "erro")
-          foram encontrados:
-      %ul
-        - @snippet.errors.full_messages.each do |msg|
-          %li= msg
-  .field
-    = f.label :title
-    %br/
-    = f.text_field :title
-  .field
-    = f.label :language
-    %br/
-    = f.text_field :language
-  .field
-    = f.label :source
-    %br/
-    = f.text_area :source
-  .field
-    %label{:for => "snippet_tags"} Tags
-    %br/
-    %input#snippet_tags.tags{:name => "snippet[tags]", :type => "text", :value => @snippet.join_tags}/
-  .actions
-    = f.submit
-  = link_to "Voltar", root_path
+%div
+  = form_for(@snippet) do |f|
+    - if @snippet.errors.any?
+      #error_explanation.error
+        %p
+          %strong
+            = pluralize(@snippet.errors.count, "erro")
+            foram encontrados:
+        %ul
+          - @snippet.errors.full_messages.each do |msg|
+            %li= msg
+    .field
+      = f.label :title
+      %br/
+      = f.text_field :title
+    .field
+      = f.label :language
+      %br/
+      = f.text_field :language
+    .field
+      = f.label :source
+      %br/
+      = f.text_area :source
+    .field
+      %label{:for => "snippet_tags"} Tags
+      %br/
+      %input#snippet_tags.tags{:name => "snippet[tags]", :type => "text", :value => @snippet.join_tags}/
+    .actions
+      = f.submit
+  %p= link_to "Voltar", root_path
+  %br/
