@@ -8,6 +8,8 @@ gem 'haml'
 gem "haml-rails"
 gem "hpricot"
 gem "ruby_parser"
+gem "mongoid", "2.0.0.beta.17"
+gem "bson_ext", "1.0.4"
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'

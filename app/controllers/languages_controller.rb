@@ -1,6 +1,6 @@
 class LanguagesController < ApplicationController
   def index
-    @snippets = Snippet.select("DISTINCT language").where(["language like ?","#{params[:q]}%"])
-    render :json => @snippets.map{|s| s.language}.to_json
+    @snippets = Snippet.all_languages
+    render :json => @snippets.to_json
   end
 end

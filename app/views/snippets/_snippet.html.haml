@@ -4,9 +4,7 @@
       = snippet.title
       = snippet.created_at.strftime("- criado em %d/%m/%Y")
     %span.col1
-      = image_tag snippet.user.gravatar_url
-      %em
-        por #{snippet.user.username}
+      = render :partial => "user", :locals => {:user => snippet.user}
     %span.col2
       %pre{:class => "brush: #{snippet.language.downcase}; toolbar: false;"}
         = snippet.source
@@ -15,4 +13,4 @@
           = link_to("Editar", edit_snippet_path(snippet))
           = link_to('Excluir', snippet, :confirm => 'Deseja realmente excluir esse snippet?', :method => :delete)
       %span.tagMatches
-        = render snippet.tags
+        = render :partial=>"tags/tag", :collection=> snippet.tags

@@ -1,13 +1,19 @@
-class Snippet < ActiveRecord::Base
-  has_and_belongs_to_many :tags
-  belongs_to :user  
+class Snippet
+  include Mongoid::Document
+  include Mongoid::Timestamps
+  
+  field :title
+  field :language
+  field :source
+  referenced_in :user
+  field :tags, :type=>Array
   
   validates :title, :presence => true
   validates :language, :presence => true
   validates :source, :presence => true
+  validates :user, :presence => true
+  validates :tags, :presence => true
   
-  accepts_nested_attributes_for :tags, :allow_destroy => :true
-
   # Construtor da classe para normalizar o parametro
   # tags que é passado como uma string sendo as tags separadas por espaco.  
   def initialize(attributes=nil)
@@ -24,11 +30,49 @@ class Snippet < ActiveRecord::Base
   
   # Junta a descricao das tags em um string separando por espaco.
   def join_tags
-    tags.map {|tag| tag.description}.join(" ") unless tags.nil? || tags.empty?
-  end
+    tags.map {|tag| tag}.join(" ") unless tags.nil? || tags.empty?
+  end 
   
+  # Verifica se o usuário logado é o dono desse snippet.
   def owned_by_current_user(current_user)
     user.id == current_user.id unless user.nil? || current_user.nil?
+  end
+  
+  #Recupera todas as tags usando Map/Reduce.
+  def self.all_tags(description=nil)
+     map = "function() {
+        if (!this.tags) {
+          return;
+        }
+
+        for (index in this.tags) {
+          item = this.tags[index];
+          if(item && item.match(/^#{description unless description.nil?}/))
+            emit(item, 1);
+        }
+      }"
+
+    reduce = "function(key, values) {
+        return values.length;
+      };"
+      
+    result = collection.mapreduce(map, reduce).find  
+    result.map{|item| item["_id"]} unless result.nil?
+  end
+  
+  #Recupera todas as languages usando Map/Reduce.
+  def self.all_languages(language=nil)
+     map = "function() {
+         if(this.language.match(/^#{language unless language.nil?}/))
+            emit(this.language, 1);
+      }"
+
+    reduce = "function(key, values) {
+        return values.length;
+      };"
+      
+    result = collection.mapreduce(map, reduce).find  
+    result.map{|item| item["_id"]} unless result.nil?
   end
   
   private
@@ -36,7 +80,7 @@ class Snippet < ActiveRecord::Base
   # Normaliza o atributo tags passada no hash como uma string contendo as tags
   # separadas por espaco.
   def normalize_tags_attribute(attributes)
-    ts =  attributes[:tags].split(" ").map {|m| Tag.find_or_create_by_description(m)}
+    ts =  attributes[:tags].split(" ").map {|m| m}
     attributes[:tags] = ts  
   end
 end

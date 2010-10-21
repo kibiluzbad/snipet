@@ -1,7 +1,10 @@
 class SnippetsController < ApplicationController
+  before_filter :load_snippet, :only => [:update,:edit]
+  before_filter :authenticate_user!, :except => [:index]
+  
   # Get /snippets
   def index
-    @snippets = Snippet.all(:include => [:tags])
+    @snippets = Snippet.all
   end
 
   # Get /snippets/new
@@ -23,15 +26,12 @@ class SnippetsController < ApplicationController
   
   # Get /snippets/[:id]/edit
   def edit
-    @snippet = Snippet.find_by_id_and_user_id(params[:id],current_user.id)
+
   end
 
   # Put /snippets/[:id]  
   def update
-    @snippet = Snippet.find_by_id_and_user_id(params[:id],current_user.id)
-    
-    if(@snippet.update_attributes(params[:snippet]))
-    
+    if(@snippet.update_attributes(params[:snippet]))    
       redirect_to snippets_path, :notice=>"Snippet alterado com sucesso!"
     else
       render :action => "edit"
@@ -44,6 +44,12 @@ class SnippetsController < ApplicationController
     @snippet.destroy
     
     redirect_to snippets_url, :notice=>"Snippet excluido com sucesso!"
+  end
+  
+  private
+  def load_snippet
+    @snippet = Snippet.find(params[:id])
+    render :file => "public/401.html", :status => :unauthorized and return unless @snippet.user_id == current_user.id
   end
 
 end
