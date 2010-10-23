@@ -18,7 +18,7 @@ class SnippetsController < ApplicationController
     @snippet.user = current_user
     
     if(@snippet.save())
-      redirect_to snippets_path, :notice=>"Snippet criado com sucesso!"
+      redirect_to snippets_path, :notice=>t(:snippet_created_notice)
     else
       render :action => "new"
     end
@@ -32,7 +32,7 @@ class SnippetsController < ApplicationController
   # Put /snippets/[:id]  
   def update
     if(@snippet.update_attributes(params[:snippet]))    
-      redirect_to snippets_path, :notice=>"Snippet alterado com sucesso!"
+      redirect_to snippets_path, :notice=>t(:snippet_edited_notice)
     else
       render :action => "edit"
     end
@@ -43,7 +43,7 @@ class SnippetsController < ApplicationController
     @snippet = Snippet.find(params[:id])
     @snippet.destroy
     
-    redirect_to snippets_url, :notice=>"Snippet excluido com sucesso!"
+    redirect_to snippets_url, :notice=>t(:snippet_deleted_notice)
   end
   
   private

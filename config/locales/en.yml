@@ -2,4 +2,24 @@
 # See http://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
 en:
-  hello: "Hello world"
+  back_text: Back
+  snippet_edit_text: Edit
+  snippet_delete_text: Delete
+  snippet_delete_confirmation: Confirm snippet delete?
+  snippet_created_notice: Snippet successfully created!
+  snippet_edited_notice: Snippet successfully updated!
+  snippet_deleted_notice: Snippet successfully deleted!
+  time:
+    formats:
+      snippet_created_at: "- created at %m/%d/%Y"
+  by_text: by
+  create_snippet_header: Create snippet
+  edit_snippet_header: Edit snippet
+  error_text: error
+  tags_text: Tags
+  menu_text: Menu
+  menu_new_snippet: New snippet
+  menu_my_snippets: My snippets
+  user_greeting: Hello
+  signin: sign in
+  signout: sign out

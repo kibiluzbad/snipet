@@ -1,8 +1,10 @@
 #site-bottom-bar.fixed-position
   #site-bottom-bar-frame
     #site-bottom-bar-content
-      %a#menu-root{:href=>'##'}Menu
+      %a#menu-root{:href=>'##'}
+        = t(:menu_text)
     
       #menu
-        = link_to "Novo", new_snippet_path
-        %a{:href=>'##'}Meus snippets
+        = link_to t(:menu_new_snippet), new_snippet_path
+        %a{:href=>'##'}
+          = t(:menu_my_snippets)

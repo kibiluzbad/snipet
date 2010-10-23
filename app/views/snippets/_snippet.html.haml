@@ -2,7 +2,7 @@
   %fieldset.snippet
     %legend
       = snippet.title
-      = snippet.created_at.strftime("- criado em %d/%m/%Y")
+      = l(snippet.created_at,:format => :snippet_created_at)
     %span.col1
       = render :partial => "user", :locals => {:user => snippet.user}
     %span.col2
@@ -10,7 +10,7 @@
         = snippet.source
       - if user_signed_in? && snippet.owned_by_current_user(current_user)
         %p.buttons
-          = link_to("Editar", edit_snippet_path(snippet))
-          = link_to('Excluir', snippet, :confirm => 'Deseja realmente excluir esse snippet?', :method => :delete)
+          = link_to(t(:snippet_edit_text), edit_snippet_path(snippet))
+          = link_to(t(:snippet_delete_text), snippet, :confirm => t(:snippet_delete_confirmation), :method => :delete)
       %span.tagMatches
         = render :partial=>"tags/tag", :collection=> snippet.tags

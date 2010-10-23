@@ -4,7 +4,7 @@
       #error_explanation.error
         %p
           %strong
-            = pluralize(@snippet.errors.count, "erro")
+            = pluralize(@snippet.errors.count, t(:error_text))
             foram encontrados:
         %ul
           - @snippet.errors.full_messages.each do |msg|
@@ -22,10 +22,11 @@
       %br/
       = f.text_area :source
     .field
-      %label{:for => "snippet_tags"} Tags
+      %label{:for => "snippet_tags"} 
+        = t(:tags_text)
       %br/
       %input#snippet_tags.tags{:name => "snippet[tags]", :type => "text", :value => @snippet.join_tags}/
     .actions
       = f.submit
-  %p= link_to "Voltar", root_path
+  %p= link_to t(:back_text), root_path
   %br/

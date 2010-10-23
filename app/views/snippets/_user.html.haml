@@ -1,4 +1,5 @@
 - if user
   = image_tag user.gravatar_url
+  %br/
   %em
-    por #{user.username}
+    #{t(:by_text)} #{user.username}
