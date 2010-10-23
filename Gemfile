@@ -1,15 +1,16 @@
-source 'http://rubygems.org'
+source "http://rubygems.org"
 
-gem 'rails', '3.0.0'
-gem 'jquery-rails'
-gem 'devise'
-gem 'gravtastic'
-gem 'haml'
+gem "rails", "3.0.0"
+gem "jquery-rails"
+gem "devise"
+gem "gravtastic"
+gem "haml"
 gem "haml-rails"
 gem "hpricot"
 gem "ruby_parser"
 gem "mongoid", "2.0.0.beta.17"
 gem "bson_ext", "1.0.4"
+gem "http_accept_language"
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
