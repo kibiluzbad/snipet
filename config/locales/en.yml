@@ -23,3 +23,5 @@ en:
   user_greeting: Hello
   signin: sign in
   signout: sign out
+  forgot_password: "Forgot your password?"
+  forgot_password_button: "Send me reset password instructions"

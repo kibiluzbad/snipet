@@ -6,6 +6,12 @@ class SnippetsController < ApplicationController
   def index
     @snippets = Snippet.all
   end
+  
+  # Get /snippets/mine
+  def mine
+    @snippets = Snippet.where(:user_id => current_user.id)
+    render :action => "index"
+  end
 
   # Get /snippets/new
   def new
