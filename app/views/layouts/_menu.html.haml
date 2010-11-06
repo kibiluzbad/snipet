@@ -6,5 +6,4 @@
     
       #menu
         = link_to t(:menu_new_snippet), new_snippet_path
-        %a{:href=>'##'}
-          = t(:menu_my_snippets)
+        = link_to t(:menu_my_snippets), mine_snippets_path
